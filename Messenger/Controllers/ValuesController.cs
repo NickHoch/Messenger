@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Messenger.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,9 +8,10 @@ using System.Web.Http;
 
 namespace Messenger.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
+        public ApplicationDbContext _ctx = new ApplicationDbContext();
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -35,6 +37,11 @@ namespace Messenger.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+        [HttpPost, Route("api/Send")]
+        public void Send([FromBody]Message msg)
+        {
+            _ctx.Mess
         }
     }
 }
