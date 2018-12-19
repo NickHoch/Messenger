@@ -12,7 +12,7 @@ namespace Messenger.Controllers
     public class ValuesController : ApiController
     {
         public ApplicationDbContext _ctx = new ApplicationDbContext();
-        // GET api/values
+        // GET api/valuesPOST
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -34,14 +34,16 @@ namespace Messenger.Controllers
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/values/5o
         public void Delete(int id)
         {
         }
+
         [HttpPost, Route("api/Send")]
         public void Send([FromBody]Message msg)
         {
-            _ctx.Mess
+            _ctx.Messages.Add(msg);
+            _ctx.SaveChanges();
         }
     }
 }

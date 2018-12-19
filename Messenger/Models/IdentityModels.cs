@@ -31,6 +31,6 @@ namespace Messenger.Models
             return new ApplicationDbContext();
         }
 
-        DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
     }
 }
